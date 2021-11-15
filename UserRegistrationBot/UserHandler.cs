@@ -54,7 +54,7 @@ namespace UserRegistrationBot
                     //await SendMessageTextForCallBackAsync(res, e, 0);
                     // Answer with null parameter:
                     await _regBot.AnswerCallbackQueryAsync(e.CallbackQuery.Id, "Hudud tanlandi");
-                    var inlineKeyboardMarkup = Companents.InlineKeyboard(Connaction.GetOrganizations());
+                    var inlineKeyboardMarkup = Companents.InlineKeyboard(Components.GetOrganizations());
                     await _regBot.SendTextMessageAsync(
                         chatId: e.CallbackQuery.Message.Chat, text: "Iltimos joriy tashkilotingizni tanlang!",
                         replyMarkup: inlineKeyboardMarkup);
@@ -70,7 +70,7 @@ namespace UserRegistrationBot
                 {
                     UserInfo.Organization = Convert.ToInt32(e.CallbackQuery.Data);
 
-                    if (Connaction.InserApplication(UserInfo.FirstName, UserInfo.LastName, UserInfo.MiddleName, UserInfo.Photo, UserInfo.Location, UserInfo.Organization))
+                    if (Components.InserApplication(UserInfo.FirstName, UserInfo.LastName, UserInfo.MiddleName, UserInfo.Photo, UserInfo.Location, UserInfo.Organization))
                     {
                         string reply = "Tabriklaymiz! Siz ro'yxatdan o'tdingiz! \n " + " Ro'yxatga olingan ma'lumotlar \n" + 
                             "FIO: " + UserInfo.FirstName + " " + UserInfo.LastName + " " + UserInfo.MiddleName + " \n";
@@ -243,7 +243,7 @@ namespace UserRegistrationBot
                             fs.Dispose();
                             UserInfo.Photo = fileName + fileType;
 
-                            var inlineKeyboardMarkup = Companents.InlineKeyboard(Connaction.GetRegionList());
+                            var inlineKeyboardMarkup = Companents.InlineKeyboard(Components.GetRegionList());
                             await _regBot.SendTextMessageAsync(
                                 chatId: e.Message.Chat.Id, text: "Iltimos joriy hududingizni tanlang!",
                                 replyMarkup: inlineKeyboardMarkup);

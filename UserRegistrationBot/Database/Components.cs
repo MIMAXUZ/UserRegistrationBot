@@ -5,7 +5,7 @@ using System.Data;
 
 namespace UDatabase
 {
-    class Connaction
+    class Components
     {
         public static string ConnectionString { get; private set; } = "server=localhost;user=root;database=userbotdb;port=3306;password=123456789";
 
